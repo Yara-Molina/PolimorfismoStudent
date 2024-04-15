@@ -50,9 +50,9 @@ public class CrearStudentController {
     void guardarAction(ActionEvent event) {
         String nombre = textFieldnombre.getText();
         String apellido = textFieldApellido.getText();
-        String edadText = textFieldEdad.getText(); // Change to String
+        String edadText = textFieldEdad.getText();
 
-        // Corrected the line below to use textFieldID.getText()
+
         String idText = textFieldID.getText();
 
         if (nombre.isEmpty() || apellido.isEmpty() || edadText.isEmpty() || idText.isEmpty()) {
