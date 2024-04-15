@@ -31,10 +31,10 @@ public class HomeController {
     private TableColumn<Student, String> col2;
 
     @FXML
-    private TableColumn<Student, Integer> col3;
+    private TableColumn<Student, Integer> col3;//edad
 
     @FXML
-    private TableColumn<Student, Integer> col4;
+    private TableColumn<Student, Integer> col4;//ID
 
     @FXML
     private Button deleteButton;
@@ -59,9 +59,8 @@ public class HomeController {
         serviciosEscolares = new ServiciosEscolares();
         col1.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNombre()));
         col2.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getApellido()));
-        col3.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getId()).asObject());
-        col4.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getEdad()).asObject());
-
+        col3.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getId()).asObject()); // ID
+        col4.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getEdad()).asObject()); // Edad
         loadFromDatabases();
     }
 

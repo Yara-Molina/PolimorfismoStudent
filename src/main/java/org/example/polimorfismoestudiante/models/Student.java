@@ -52,21 +52,9 @@ private int id;
         return "Student{" +
                 "nombre='" + nombre + '\'' +
                 ", apellido='" + apellido + '\'' +
+                ", edad=" + edad +
                 ", id=" + id +
                 '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Student student = (Student) o;
-        return id == student.id && Objects.equals(nombre, student.nombre) && Objects.equals(apellido, student.apellido);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(nombre, apellido, id);
     }
 }
 

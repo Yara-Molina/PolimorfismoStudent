@@ -8,6 +8,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.example.polimorfismoestudiante.models.*;
 
+import java.util.ArrayList;
+
 
 public class CrearStudentController {
     @FXML
@@ -18,13 +20,15 @@ public class CrearStudentController {
 
     @FXML
     private TextField textFieldEdad;
-
     @FXML
     private TextField textFieldID;
-
     @FXML
     private TextField textFieldnombre;
     private Student student;
+
+    private int originalid;
+
+    private ArrayList<IDataStudent> databases = new ArrayList<>();
     private ServiciosEscolares serviciosEscolares;
 
     public void initialize() {
@@ -37,19 +41,21 @@ public class CrearStudentController {
         if (student != null) {
             textFieldnombre.setText(student.getNombre());
             textFieldApellido.setText(student.getApellido());
-            textFieldID.setText(String.valueOf(student.getId()));
             textFieldEdad.setText(String.valueOf(student.getEdad()));
+
+            originalid= student.getId();
+            textFieldID.setText(String.valueOf(originalid));
         }
     }
+
     @FXML
     void guardarAction(ActionEvent event) {
         String nombre = textFieldnombre.getText();
         String apellido = textFieldApellido.getText();
         String edadText = textFieldEdad.getText();
-        String idText = textFieldID.getText();
 
 
-        if (nombre.isEmpty() || apellido.isEmpty() || edadText.isEmpty() || idText.isEmpty()) {
+        if (nombre.isEmpty() || apellido.isEmpty() || edadText.isEmpty()) {
             showErrorAlert("Todos los campos son requeridos.");
             return;
         }
@@ -59,17 +65,10 @@ public class CrearStudentController {
             edad = Integer.parseInt(edadText);
         } catch (NumberFormatException e) {
             showErrorAlert("Ingrese un número válido para la edad.");
-            return; // Salir del método si la edad no es válida
-        }
-
-        int id;
-        try {
-            id = Integer.parseInt(idText);
-        } catch (NumberFormatException e) {
-            showErrorAlert("Ingrese un número válido para el ID.");
             return;
         }
 
+        int id = (student != null) ? originalid : generateUniqueID();
 
         Student newStudent = new Student(nombre, apellido, id, edad);
 
@@ -77,7 +76,6 @@ public class CrearStudentController {
             student.setNombre(nombre);
             student.setApellido(apellido);
             student.setEdad(edad);
-            student.setId(id);
         } else {
             student = newStudent;
             serviciosEscolares.saveToDatabases(student);
@@ -88,6 +86,26 @@ public class CrearStudentController {
     private void closeWindow() {
         Stage stage = (Stage) saveButton.getScene().getWindow();
         stage.close();
+    }
+
+    private int generateUniqueID() {
+        int id;
+        do {
+            id = (int) (Math.random() * 10000);
+            System.out.println("ID:"+id);
+        } while (idAlreadyExists(id));
+        return id;
+    }
+
+    private boolean idAlreadyExists(int id) {
+        for (IDataStudent database : databases) {
+            for (Student existingStudent : database.getStudents()) {
+                if (existingStudent.getId() == id) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     private void showErrorAlert(String message) {

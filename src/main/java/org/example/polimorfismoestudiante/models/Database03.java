@@ -17,6 +17,7 @@ public class Database03 implements IDataStudent{
             if (e.getId() == student.getId()) {
                 e.setNombre(student.getNombre());
                 e.setApellido(student.getApellido());
+                e.setEdad(student.getEdad());
 
                 return;
             }

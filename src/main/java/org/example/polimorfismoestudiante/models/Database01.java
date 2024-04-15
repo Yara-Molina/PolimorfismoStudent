@@ -11,13 +11,13 @@ public class Database01 implements IDataStudent {
         students1.add(student);
 
     }
-
     @Override
     public void updateStudent(Student student) {
         for (Student e : students1) {
             if (e.getId() == student.getId()) {
                 e.setNombre(student.getNombre());
                 e.setApellido(student.getApellido());
+                e.setEdad(student.getEdad());
 
                 return;
             }
