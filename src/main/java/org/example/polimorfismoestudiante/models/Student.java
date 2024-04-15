@@ -1,7 +1,5 @@
 package org.example.polimorfismoestudiante.models;
 
-import java.util.Objects;
-
 public class Student {
 private String nombre;
 private String apellido;

@@ -59,8 +59,8 @@ public class HomeController {
         serviciosEscolares = new ServiciosEscolares();
         col1.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNombre()));
         col2.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getApellido()));
-        col3.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getId()).asObject()); // ID
-        col4.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getEdad()).asObject()); // Edad
+        col4.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getId()).asObject()); // ID
+        col3.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getEdad()).asObject()); // Edad
         loadFromDatabases();
     }
 

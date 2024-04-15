@@ -38,7 +38,7 @@
       <TextField fx:id="textFieldnombre" layoutX="149.0" layoutY="104.0" />
       <TextField fx:id="textFieldApellido" layoutX="149.0" layoutY="160.0" />
       <TextField fx:id="textFieldEdad" layoutX="149.0" layoutY="208.0" />
-      <TextField fx:id="textFieldID" disable="true" layoutX="149.0" layoutY="258.0" />
+      <TextField fx:id="textFieldID" layoutX="149.0" layoutY="258.0" />
       <Button fx:id="saveButton" layoutX="240.0" layoutY="300.0" mnemonicParsing="false" onAction="#guardarAction" text="Guardar" />
       <ImageView fitHeight="176.0" fitWidth="173.0" layoutX="314.0" layoutY="99.0" pickOnBounds="true" preserveRatio="true">
          <image>

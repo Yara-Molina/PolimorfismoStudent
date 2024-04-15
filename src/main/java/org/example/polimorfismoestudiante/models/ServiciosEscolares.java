@@ -29,7 +29,6 @@ public class ServiciosEscolares {
             database.updateStudent(modifiedStudent);
         }
     }
-
     public void printStudents() {
         System.out.println("Estudiantes en la Escuela:");
 
