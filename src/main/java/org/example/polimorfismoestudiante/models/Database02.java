@@ -23,7 +23,6 @@ public class Database02 implements IDataStudent{
         }
     }
 
-    @Override
     public ArrayList<Student> getStudents() {
         return new ArrayList<>(students2);
     }
