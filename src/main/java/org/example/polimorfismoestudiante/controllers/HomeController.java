@@ -145,6 +145,12 @@ public class HomeController {
         alert.setTitle("Error");
         alert.setContentText(message);
         alert.showAndWait();
+
+        alert.getDialogPane().getStylesheets().add(
+                getClass().getResource("/Style.css").toExternalForm()
+        );
+
+        alert.getDialogPane().getStyleClass().add("alert");
     }
 
 }
