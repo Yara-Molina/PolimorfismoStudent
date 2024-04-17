@@ -23,21 +23,16 @@ public class ServiciosEscolares {
             database.saveStudent(student);
         }
     }
-
     public void updateInDatabases(Student modifiedStudent, Student originalStudent) {
         for (IDataStudent database : databases) {
             database.updateStudent(modifiedStudent);
         }
     }
-    public void printStudents() {
-        System.out.println("Estudiantes en la Escuela:");
-
+    public ArrayList<Student> readFromDatabases() {
+        ArrayList<Student> allStudents = new ArrayList<>();
         for (IDataStudent database : databases) {
-            System.out.println("Base de Datos: " + database.getClass().getSimpleName());
-            for (Student student : database.getStudents()) {
-                System.out.println(student);
-            }
-            System.out.println();
+            allStudents.addAll(database.readStudents());
         }
+        return allStudents;
     }
 }

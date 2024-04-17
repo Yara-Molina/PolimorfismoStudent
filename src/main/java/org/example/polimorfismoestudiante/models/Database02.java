@@ -23,7 +23,7 @@ public class Database02 implements IDataStudent{
         }
     }
 
-    public ArrayList<Student> getStudents() {
+    public ArrayList<Student> readStudents() {
         return new ArrayList<>(students2);
     }
 }

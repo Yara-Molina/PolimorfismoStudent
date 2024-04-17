@@ -5,7 +5,5 @@ import java.util.ArrayList;
 public interface IDataStudent {
      void saveStudent(Student student);
      void updateStudent(Student student);
-
-     //ArrayList<Student> readStudents();
-     ArrayList<Student> getStudents();
+     ArrayList<Student> readStudents();
 }

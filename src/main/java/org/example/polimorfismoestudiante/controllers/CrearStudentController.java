@@ -27,8 +27,6 @@ public class CrearStudentController {
     private TextField textFieldnombre;
 
     private Student student;
-
-    private ArrayList<IDataStudent> databases = new ArrayList<>();
     private ServiciosEscolares serviciosEscolares;
 
     public void initialize() {

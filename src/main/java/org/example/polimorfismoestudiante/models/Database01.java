@@ -18,16 +18,11 @@ public class Database01 implements IDataStudent {
                 e.setNombre(student.getNombre());
                 e.setApellido(student.getApellido());
                 e.setEdad(student.getEdad());
-
-                return;
             }
         }
     }
-
     @Override
-    public ArrayList<Student> getStudents() {
+    public ArrayList<Student> readStudents() {
         return new ArrayList<>(students1);
     }
-
-
 }

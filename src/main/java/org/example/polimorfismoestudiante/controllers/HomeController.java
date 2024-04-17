@@ -51,6 +51,8 @@ public class HomeController {
     private ObservableList<Student> studentObservableList = FXCollections.observableArrayList();
     private ArrayList<IDataStudent> databases = new ArrayList<>();
 
+    private ArrayList<ServiciosEscolares> serviciosEscolaresArrayList = new ArrayList<>();
+
     private ServiciosEscolares serviciosEscolares;
 
 
@@ -65,8 +67,8 @@ public class HomeController {
     }
 
     private void loadFromDatabases() {
-        for (IDataStudent database : databases) {
-            studentObservableList.addAll(database.getStudents());
+        for (ServiciosEscolares serviciosEscolares1 : serviciosEscolaresArrayList ) {
+            studentObservableList.addAll(serviciosEscolares1.readFromDatabases());
         }
         tableViewStudents.setItems(studentObservableList);
     }
@@ -92,7 +94,6 @@ public class HomeController {
                 studentObservableList.add(student);
                 serviciosEscolares.saveToDatabases(student);
                 tableViewStudents.refresh();
-                serviciosEscolares.printStudents();
             }
         } catch (IOException e) {
             showErrorAlert("Error al guardar");
@@ -124,7 +125,6 @@ public class HomeController {
                 if (modifiedStudent != null) {
                     serviciosEscolares.updateInDatabases(selectedStudent, modifiedStudent);
                     tableViewStudents.refresh();
-                    serviciosEscolares.printStudents();
                 }
             } catch (IOException e) {
                 showErrorAlert("Error al cargar la ventana de modificación");
